@@ -29,18 +29,7 @@ import com.recombee.api_client.exceptions.ApiException;
 public class checkExistingUser  {
 
 	public static String checkUser(String firstname, String lastname,String email,String birthyear) {
-		// check in recombee if user exists
 
-		//	"https://sde-storage-ws.herokuapp.com/rdb/users"
-
-		//if yes, disply message "already exists"
-
-
-
-		System.out.println(firstname);
-		System.out.println(lastname);
-		System.out.println(email);
-		System.out.println(birthyear);
 
 		int j=0;
 		List<String> list=new LinkedList<>();
@@ -96,7 +85,7 @@ public class checkExistingUser  {
 	public static List<String> listUsers() {
 		String result="User in list users";
 		String uri =
-				"https://sde-storage-ws.herokuapp.com/rdb/users";
+				"https://sde-storage-ws.herokuapp.com/rdb/users/all";
 		URL url;
 		List<String> list = new LinkedList<>();
 		try {
@@ -132,4 +121,50 @@ public class checkExistingUser  {
 		} 
 		return list;
 	}
+	
+
+	public static String getUserID(String firstname, String lastname,String email,String birthyear) {
+		String result=null;
+	/*	System.out.println("in bean");
+		System.out.println(firstname);
+		System.out.println(lastname);
+		System.out.println(email);
+		System.out.println(birthyear);
+	*/
+		String uri =
+				"https://sde-storage-ws.herokuapp.com/rdb/users?firstname="+firstname+"&lastname="+lastname+"&email="+email+"&birthyear="+birthyear;
+		URL url;
+		List<String> list = new LinkedList<>();
+		try {
+			url = new URL(uri);
+
+			HttpURLConnection connection =
+					(HttpURLConnection) url.openConnection();
+			connection.setRequestMethod("GET");
+
+
+			BufferedReader in = new BufferedReader
+					(new InputStreamReader(connection.getInputStream()));
+			String inputLine=null;
+
+			while ((inputLine = in.readLine()) != null) {
+				result=(inputLine);
+				System.out.println(result);
+			}
+
+
+			in.close();
+			connection.disconnect();
+		}
+		catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		} 
+		return result;
+	}
+	
+	
 }
