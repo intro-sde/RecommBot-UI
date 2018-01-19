@@ -35,8 +35,9 @@ public class searchItems {
 
 				list.add(inputLine);
 				
+				
 			}
-
+			
 
 			in.close();
 

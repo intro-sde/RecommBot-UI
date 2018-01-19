@@ -77,15 +77,13 @@ public class RecommBot extends TelegramLongPollingBot {
 
 
 			}else if (message_text.equals("/start")) {
-				//String caption = 
-				SendPhoto msg = new SendPhoto().setNewPhoto(getPhoto()).setChatId(chat_id);
-				//		.setCaption(caption);
+				
 				message_text="Please type your details in the format: firstname,lastname,email,birthyear";
 				SendMessage message = new SendMessage() // Create a message object
 						.setChatId(chat_id)
 						.setText(message_text);
 				try {
-					sendPhoto(msg);
+					
 					execute(message);
 				} catch (TelegramApiException e) {
 
@@ -94,14 +92,14 @@ public class RecommBot extends TelegramLongPollingBot {
 			}			
 			else if (message_text.equals("/stop")) {
 
-				SendPhoto msg = new SendPhoto().setNewPhoto(getLastPhoto()).setChatId(chat_id);	
+				
 				message_text="Heartfelt thankyou for using our services :-)";
 				SendMessage message = new SendMessage() // Create a message object
 						.setChatId(chat_id)
 						.setText(message_text);
 
 				try {
-					sendPhoto(msg);
+					
 					execute(message);
 				} catch (TelegramApiException e) {
 					// TODO Auto-generated catch block
@@ -222,11 +220,12 @@ public class RecommBot extends TelegramLongPollingBot {
 
 
 						execute(message);
-
-						for (int i=0;i<list1.size()-12;i=i+13) { 
-
-							messageList=list1.subList(i+3, i+9).toString();
-
+						System.out.println(list1.size());
+						
+						for (int i=0;i<list1.size()-9;i=i+10) { 
+							
+							messageList=list1.subList(i+1, i+10).toString();
+							System.out.println(messageList);
 							SendMessage message1 = new SendMessage() // Create a message object
 									.setChatId(chat_id).setText(messageList);
 							execute(message1);
@@ -252,9 +251,7 @@ public class RecommBot extends TelegramLongPollingBot {
 
 			}else if(user.length==3) {
 
-				//userId ="4";
-
-
+				
 				String[] items=message_text.split(",");
 				itemId1=items[0];
 				itemId2=items[1];
@@ -359,14 +356,22 @@ public class RecommBot extends TelegramLongPollingBot {
 				type="activity";
 				category="sports";
 				String messageList=null;
+				String result1=null;
+				String result2=null;
+
 				
 				try {
 
 					list1=randomCategoryQuotes.getRandomQuotes(category);
-
+						
 						
 						messageList=list1.subList(7, 8).toString()+list1.subList(9, 10).toString();
-						
+						String[] quotes=messageList.split("\"");
+
+						result1=quotes[3].toString();
+						result2=quotes[7].toString();
+						messageList=result1+" - "+result2;
+											
 						SendMessage message1 = new SendMessage() // Create a message object
 								.setChatId(chatId).setText(messageList);
 						execute(message1);
@@ -401,14 +406,14 @@ public class RecommBot extends TelegramLongPollingBot {
 				}
 			}else if (call_data.equals("stop")) {
 				
-				SendPhoto msg = new SendPhoto().setNewPhoto(getLastPhoto()).setChatId(chatId);	
+					
 				String message_text="Heartfelt thankyou for using our services :-)";
 				SendMessage message = new SendMessage() // Create a message object
 						.setChatId(chatId)
 						.setText(message_text);
 
 				try {
-					sendPhoto(msg);
+					
 					execute(message);
 				} catch (TelegramApiException e) {
 					// TODO Auto-generated catch block
@@ -438,57 +443,6 @@ public class RecommBot extends TelegramLongPollingBot {
 		return BOT_TOKEN;
 	}
 
-
-	public File getPhoto() {
-
-
-		BufferedImage image = null;
-		java.io.File f = null;
-		int width = 900;    //width of the image
-		int height = 600;   //height of the image
-		File photo = null;
-		image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-
-		try {
-
-			f = new File("th.jpeg"); //image file path
-			image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-			image = ImageIO.read(f);
-
-			photo = new File("th.jpeg");
-
-		}catch (IOException e) {
-			e.printStackTrace();
-
-		}
-
-		return photo;
-	}
-	public File getLastPhoto() {
-
-
-		BufferedImage image = null;
-		java.io.File f = null;
-		int width = 600;    //width of the image
-		int height = 900;   //height of the image
-		File photo = null;
-		image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-
-		try {
-
-			f = new File("Thankyou.jpeg"); //image file path
-			image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-			image = ImageIO.read(f);
-
-			photo = new File("Thankyou.jpeg");
-
-		}catch (IOException e) {
-			e.printStackTrace();
-
-		}
-
-		return photo;
-	}
 
 
 }
