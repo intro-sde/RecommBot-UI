@@ -125,16 +125,11 @@ public class checkExistingUser  {
 
 	public static String getUserID(String firstname, String lastname,String email,String birthyear) {
 		String result=null;
-	/*	System.out.println("in bean");
-		System.out.println(firstname);
-		System.out.println(lastname);
-		System.out.println(email);
-		System.out.println(birthyear);
-	*/
+
 		String uri =
 				"https://sde-storage-ws.herokuapp.com/rdb/users?firstname="+firstname+"&lastname="+lastname+"&email="+email+"&birthyear="+birthyear;
 		URL url;
-		List<String> list = new LinkedList<>();
+		
 		try {
 			url = new URL(uri);
 
@@ -149,7 +144,6 @@ public class checkExistingUser  {
 
 			while ((inputLine = in.readLine()) != null) {
 				result=(inputLine);
-				System.out.println(result);
 			}
 
 
