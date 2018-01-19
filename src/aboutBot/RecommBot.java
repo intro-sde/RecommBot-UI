@@ -6,28 +6,28 @@ import org.telegram.telegrambots.api.methods.send.SendMessage;
 import businesslogic.item.savePreferredItems;
 import businesslogic.item.saveRatings;
 import businesslogic.item.searchItems;
-import businesslogic.user.checkExistingUser;
+
+import businesslogic.user.userClient;
 import businesslogic.user.userData;
 import randomQuotes.randomCategoryQuotes;
 
-import org.telegram.telegrambots.api.methods.send.SendPhoto;
-import org.telegram.telegrambots.api.methods.updatingmessages.EditMessageText;
+
+
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 
-import com.mashape.unirest.http.exceptions.UnirestException;
 
-import java.io.IOException;
+
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
 
-import java.io.File;
+
+
 
 public class RecommBot extends TelegramLongPollingBot {
 
@@ -59,7 +59,7 @@ public class RecommBot extends TelegramLongPollingBot {
 			// Set variables
 			String message_text = update.getMessage().getText();
 			String user[]=message_text.split(",");
-			List<String> list=new LinkedList<>();
+
 
 			if (message_text.equals("BotUserName")) {
 				message_text = getBotUsername();
@@ -246,8 +246,13 @@ public class RecommBot extends TelegramLongPollingBot {
 							execute(message);
 							
 							for (int i=0;i<list1.size()-12;i=i+13) { 
-								messageList=list1.subList(i+1, i+12).toString();
-							//	messageList=list1.subList(i+1, i+10).toString();
+								
+								//(int i=0;i<list1.size()-9;i=i+10) // 1
+								//messageList=list1.subList(i+1, i+10).toString(); //1
+								
+								//(int i=0;i<list1.size()-12;i=i+13) //2								
+								messageList=list1.subList(i+1, i+12).toString();//2
+							
 								//System.out.println(messageList);
 								SendMessage message1 = new SendMessage() // Create a message object
 										.setChatId(chat_id).setText(messageList);
@@ -319,7 +324,7 @@ public class RecommBot extends TelegramLongPollingBot {
 
 				String result;
 				try {
-					result = checkExistingUser.checkUser(firstname,lastname,email,birthyear);
+					result = userClient.checkExistingUser(firstname,lastname,email,birthyear);
 					message_text=result;
 
 					SendMessage message = new SendMessage() // Create a message object
@@ -385,8 +390,7 @@ public class RecommBot extends TelegramLongPollingBot {
 				try {
 
 					list1=randomCategoryQuotes.getRandomQuotes(category);
-					System.out.println(list1.size());
-					System.out.println(list1.isEmpty());
+
 					if (list1.size()!=0) {
 											
 						messageList=list1.subList(7, 8).toString()+list1.subList(9, 10).toString();
