@@ -1,5 +1,4 @@
 # RecommBot-UI
-Telegram Bot
 
 This is a telegram bot which serves as a user interface for the recommendation system for activities and restaurants available in selected cities of the world.
 
@@ -23,8 +22,7 @@ Retrieving from TheySaidSo API:
 - category = <could be one of these: sports,funny,inspire,management,life,love,art,students>
 
 Reference:
-
-    TheySaidSo API, Available at: https://quotes.rest/#!/qod/get_qod
+- TheySaidSo API, Available at: https://quotes.rest/#!/qod/get_qod
 
 
 
