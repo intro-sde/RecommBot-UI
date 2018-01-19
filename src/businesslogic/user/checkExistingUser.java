@@ -123,42 +123,6 @@ public class checkExistingUser  {
 	}
 	
 
-	public static String getUserID(String firstname, String lastname,String email,String birthyear) {
-		String result=null;
-
-		String uri =
-				"https://sde-storage-ws.herokuapp.com/rdb/users?firstname="+firstname+"&lastname="+lastname+"&email="+email+"&birthyear="+birthyear;
-		URL url;
-		
-		try {
-			url = new URL(uri);
-
-			HttpURLConnection connection =
-					(HttpURLConnection) url.openConnection();
-			connection.setRequestMethod("GET");
-
-
-			BufferedReader in = new BufferedReader
-					(new InputStreamReader(connection.getInputStream()));
-			String inputLine=null;
-
-			while ((inputLine = in.readLine()) != null) {
-				result=(inputLine);
-			}
-
-
-			in.close();
-			connection.disconnect();
-		}
-		catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-		} 
-		return result;
-	}
 	
 	
 }

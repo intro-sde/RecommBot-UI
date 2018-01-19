@@ -1,4 +1,4 @@
-package businesslogic.item;
+package businesslogic.user;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,19 +6,15 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.LinkedList;
-import java.util.List;
 
-public class searchItems {
+public class userData {
+	public static String getUserID(String firstname, String lastname,String email,String birthyear) {
+		String result=null;
 
-
-	public static List<String> listItems(String userId,String city, String type) {
-		String result="Items in list items";
-
-		String uri ="https://sde-recommendation-ws.herokuapp.com/recommend?userId="+userId+"&type="+type+"&city="+city;
-	
+		String uri =
+				"https://sde-storage-ws.herokuapp.com/rdb/users?firstname="+firstname+"&lastname="+lastname+"&email="+email+"&birthyear="+birthyear;
 		URL url;
-		List<String> list = new LinkedList<>();
+		
 		try {
 			url = new URL(uri);
 
@@ -32,14 +28,11 @@ public class searchItems {
 			String inputLine=null;
 
 			while ((inputLine = in.readLine()) != null) {
-
-				list.add(inputLine);
-					
+				result=(inputLine);
 			}
-			
+
+
 			in.close();
-
-
 			connection.disconnect();
 		}
 		catch (MalformedURLException e) {
@@ -49,8 +42,7 @@ public class searchItems {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
 		} 
-		return list;
+		return result;
 	}
-	
 	
 }
