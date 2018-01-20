@@ -24,7 +24,7 @@ If the user chose activity then in the end of the process the bot offers to also
 
 Execution:
 
-Step 1. Clone the github repository in your local machine
+Step 1. Clone the github repository in your local machine.
 
 Step 2. Import the project into Eclipse IDE.
 
