@@ -25,16 +25,22 @@ If the user chose activity then in the end of the process the bot offers to also
 Execution:
 
 Step 1. Clone the github repository in your local machine
+
 Step 2. Import the project into Eclipse IDE.
-    3. Add Ivy jars (Right click on the ivy.xml and select 'Add Ivy Library...').
-    4. Add 'telegrambots-3.5-jar-with-dependencies.jar' to the build path of the project. This jar can be downloaded from the below URL.
+
+Step 3. Add Ivy jars (Right click on the ivy.xml and select 'Add Ivy Library...').
+
+Step 4. Add 'telegrambots-3.5-jar-with-dependencies.jar' to the build path of the project. This jar can be downloaded from the below URL.
           https://github.com/rubenlagus/TelegramBots/releases/tag/v3.5
           
-    5. Export the project as runnable jar.
-    6. Execute the jar from the terminal using below code.
+Step 5. Export the project as runnable jar.
+
+Step 6. Execute the jar from the terminal using below code.
           java -jar <runnable_jar_name>.jar
-    7. Bot is registered and is ready to use.
-    8. Open telegram app in your phone, search for the bot "@RecommBot" and start using our services.
+          
+Step 7. Bot is registered and is ready to use.
+
+Step 8. Open telegram app in your phone, search for the bot "@RecommBot" and start using our services.
     
 
 
