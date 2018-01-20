@@ -2,27 +2,28 @@
 
 This is a telegram bot which serves as a user interface for the recommendation system for activities and restaurants available in selected cities of the world.
 
-- Telegram Bot username is RecommBot and it could be found by searching @RecommBot in the telegram app.
+Telegram Bot username is RecommBot and it could be found by searching @RecommBot in the telegram app.
 
-At the start of the chat with the bot, it prompts user to input user details. New user is registered to recombee database. SOAP user registration service is used here.
+At the start of the chat with the bot, it prompts user to input user details. New user is registered to Recombee database if user is not in the system. 
 - firstname
 - lastname
 - email
 - birthyear
 
 The bot asks user to chose between activity or restaurant and input a city name for getting recommendations.
+The bot also motivates users with quotes about either sports or restaurants.
 
-The bot shows the recommendation to the user based on-
-- If it is an existing user or a new user
-- In case of an existing user, if the user has any preferences or ratings previosuly saved
+The bot shows 5 recommendations to the user based on the rules implemented in the recommendation business logic servcie:
+- when the user has no ratings we use item based recommendation based on one random item from the user's preferences, and if they don't have preference we just give 5 random items with given type and city
+- when the user has ratings we use user based recommendation with respect to user's ratings and preferences
+we always take city and activity type into consideration
 
-The bot also motivates users who chose to go for an activity. To do so, the bot fetches quotes from an external API called TheySaidSo.
+The user is asked to select one item out of these five that they liked most and provide a rating from -1.0 to 1.0.
 
-Retrieving from TheySaidSo API:
-- category = <could be one of these: sports,funny,inspire,management,life,love,art,students>
+If the user chose activity then in the end of the process the bot offers to also recommend restaurants or to finish the process.
 
-Reference:
-- TheySaidSo API, Available at: https://quotes.rest/#!/qod/get_qod
+
+
 
 
 
