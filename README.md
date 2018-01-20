@@ -30,7 +30,7 @@ Step 2. Import the project into Eclipse IDE.
 
 Step 3. Add Ivy jars (Right click on the ivy.xml and select 'Add Ivy Library...').
 
-Step 4. Add 'telegrambots-3.5-jar-with-dependencies.jar' to the build path of the project. This jar can be downloaded from the below URL.
+Step 4. Add 'telegrambots-3.5-jar-with-dependencies.jar' to the build path of the project. This jar can be downloaded from the the URL:
           https://github.com/rubenlagus/TelegramBots/releases/tag/v3.5
           
 Step 5. Export the project as runnable jar.
