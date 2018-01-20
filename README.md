@@ -13,7 +13,7 @@ At the start of the chat with the bot, it prompts user to input user details. Ne
 The bot asks user to chose between activity or restaurant and input a city name for getting recommendations.
 The bot also motivates users with quotes about either sports or restaurants.
 
-The bot shows 5 recommendations to the user based on the rules implemented in the recommendation business logic servcie:
+The bot shows 5 recommendations to the user based on the rules implemented in the recommendation business logic service:
 - when the user has no ratings we use item based recommendation based on one random item from the user's preferences, and if they don't have preference we just give 5 random items with given type and city
 - when the user has ratings we use user based recommendation with respect to user's ratings and preferences
 we always take city and activity type into consideration
