@@ -25,7 +25,7 @@ import java.util.List;
 public class RecommBot extends TelegramLongPollingBot {
 
 	public static final String BOT_USERNAME = "RecommBot";
-	public static final String BOT_TOKEN = "Bot Token is a secret string";
+	public static final String BOT_TOKEN = "526078856:AAG4GcA22xB8TFgUkYoTiKxiA7njjDK_iJg";
 	public String type="";
 	public String logUserId="";
 	public String city="";
