@@ -120,7 +120,7 @@ public class RecommBot extends TelegramLongPollingBot {
 				String item=null;
 
 				String answer = "Recommendations for you";
-				//String answer1="Please select top 3 preferences. To select, please reply with the itemId's of your preferences in this format: itemId1,itemId2,itemId3";
+				
 				String answerRating="Please choose the item you liked the most and give a rating on the scale of -1.0 to 1.0 in the format: itemId,rating";
 				try {
 
@@ -223,8 +223,9 @@ public class RecommBot extends TelegramLongPollingBot {
 					InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
 					List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
 					List<InlineKeyboardButton> rowInline = new ArrayList<>();
-					rowInline.add(new InlineKeyboardButton().setText("No, thanks!").setCallbackData("stop"));
 					rowInline.add(new InlineKeyboardButton().setText("Go to a Restaurant").setCallbackData("cityRestaurantPreference"));
+					rowInline.add(new InlineKeyboardButton().setText("No, thanks!").setCallbackData("stop"));
+					
 					rowsInline.add(rowInline); // Set the keyboard to the markup
 
 					markupInline.setKeyboard(rowsInline);// Add it to the message
@@ -344,7 +345,7 @@ public class RecommBot extends TelegramLongPollingBot {
 						.setChatId(chatId).setText(quote);
 
 
-				String answer = "Which city would you prefer?";
+				String answer = "Which city would you prefer for an activity?";
 
 				SendMessage messageCity = new SendMessage() // Create a message object
 						.setChatId(chatId)
@@ -368,7 +369,7 @@ public class RecommBot extends TelegramLongPollingBot {
 				SendMessage messageQuote = new SendMessage() // Create a message object
 						.setChatId(chatId).setText(quote);
 
-				String answer = "Which city would you prefer?";
+				String answer = "Which city would you prefer for restaurant?";
 
 				SendMessage messageCity = new SendMessage() // Create a message object
 						.setChatId(chatId)
